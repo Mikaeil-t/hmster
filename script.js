@@ -259,10 +259,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('creatorChannelBtn').addEventListener('click', () => {
-        window.open('https://web.telegram.org/@m_3_1_7', '_blank');
+        window.open('https://t.me/AirdropBeFarsi', '_blank');
     });
 
     telegramChannelBtn.addEventListener('click', () => {
-        window.open('https://t.me/AirdropBeFarsi', '_blank');
+        window.open('https://t.me/m_3_1_7', '_blank');
     });
 });
