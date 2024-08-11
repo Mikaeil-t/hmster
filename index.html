@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Drop Be Farsi | ایردراپ به فارسی</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>AIR DROP BE FARSI | ایـــردراپ به فارســـی </h2>
+        <div class="form-group">
+            <label for="gameSelect">انتخاب بازی</label>
+            <select id="gameSelect">
+                <option value="1">Riding Extreme 3D</option>
+                <option value="2">Chain Cube 2048</option>
+                <option value="3">My Clone Army</option>
+                <option value="4">Train Miner</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label id="keyCountLabel" for="keyCountSelect">تعداد کلیـد </label>
+            <select id="keyCountSelect">
+                <option value="1">1</option>
+                <option value="3">3</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+            </select>
+        </div>
+        <button id="startBtn">شــروع | Start</button>
+        <div id="progressContainer" class="hidden">
+            <div class="progress-bar">
+                <div id="progressBar"></div>
+            </div>
+            <div id="progressText">0%</div>
+            <div id="progressLog">Starting...</div>
+        </div>
+        <div id="keyContainer" class="hidden">
+            <h3 id="generatedKeysTitle" class="hidden">Generated Keys:</h3>
+            <div id="keysList"></div>
+            <button id="copyAllBtn" class="hidden">Copy All Keys</button>
+            <div id="copyStatus" class="hidden">Copied!</div>
+            <button id="generateMoreBtn">Generate More Keys</button>
+        </div>
+        <div class="footer">
+            <p> Powered By: @AirdropBeFarsi mikaeil ,arash ,javad ,sina , and other friends.. </p>
+            <button id="telegramChannelBtn">Contact Creator</button> <br><br>
+            <button id="creatorChannelBtn">کــــــانال تلگرام</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

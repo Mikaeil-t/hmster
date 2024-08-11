@@ -1,0 +1,126 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, sans-serif;
+    background-color: rgb(0, 0, 0)
+    ;
+    color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: rgb(58, 58, 58);
+    border-radius: 50px;
+    box-shadow: 0 2px 10px rgba(255, 238, 0, 0.1);
+    padding: 20px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 70px;
+}
+
+.form-group {
+    margin-bottom: 50px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+button {
+    background-color: rgb(255, 123, 0);
+    color: rgb(19, 19, 19);
+    border: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+button:hover {
+    background-color:rgb(28, 246, 8);
+}
+
+.hidden {
+    display: none;
+}
+
+.progress-bar {
+    background-color: rgba(195, 198, 195, 0.546);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 20px;
+    height: 30px;
+    position: relative;
+}
+
+.progress-bar div {
+    height: 100%;
+    background-color: orange;
+    width: 0;
+    transition: width 0.5s;
+}
+
+#progressText {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.key-item {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.key-item input {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #00ff11;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.copyKeyBtn {
+    background-color: rgb(255, 32, 32);
+    border: none;
+    padding: 10px 20px;
+    color: rgb(2, 2, 2);
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.copyKeyBtn:hover {
+    background-color: #f9740e;
+}
+
+.footer {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+#copyStatus {
+    margin-top: 10px;
+    color: green;
+}
+
+#telegramChannelBtn{
+    background-color: rgb(13, 255, 0);
+}
