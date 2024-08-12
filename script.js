@@ -140,16 +140,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const storageKey = `keys_generated_${game.name}`;
         const storedData = JSON.parse(localStorage.getItem(storageKey));
-     if (storedData.count + keyCount > MAX_KEYS_PER_GAME_PER_DAY) {
-            alert(`شما کلید های امروز را قبلا تولید کرده اید، فردا امتحان کنید`);
-            previousKeysList.innerHTML = storedData.keys.map(key =>
-                `<div class="key-item">
-                    <input type="text" value="${key}" readonly>
-                </div>`
-            ).join('');
-            previousKeysContainer.classList.remove('hidden');
-            return;
-        }
+     // if (storedData.count + keyCount > MAX_KEYS_PER_GAME_PER_DAY) {
+     //        alert(`شما کلید های امروز را قبلا تولید کرده اید، فردا امتحان کنید`);
+     //        previousKeysList.innerHTML = storedData.keys.map(key =>
+     //            `<div class="key-item">
+     //                <input type="text" value="${key}" readonly>
+     //            </div>`
+     //        ).join('');
+     //        previousKeysContainer.classList.remove('hidden');
+     //        return;
+     //    }
        
 
         keyCountLabel.innerText = `Number of keys: ${keyCount}`;
