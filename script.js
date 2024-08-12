@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const EVENTS_DELAY = 12000;
-    const MAX_KEYS_PER_GAME_PER_DAY = 35;
+    const MAX_KEYS_PER_GAME_PER_DAY = 50;
 
     const games = {
         1: {
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (!response.ok) {
-            throw new Error('خطا در دریافت کد، آیپی را عوض کنید');
+            throw new Error('Failed to login');
         }
 
         const data = await response.json();
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (!response.ok) {
-            throw new Error('خطا در تولید کد');
+            throw new Error('Failed to generate key');
         }
 
         const data = await response.json();
@@ -141,24 +141,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const storageKey = `keys_generated_${game.name}`;
         const storedData = JSON.parse(localStorage.getItem(storageKey));
 
-        if (storedData.count + keyCount > MAX_KEYS_PER_GAME_PER_DAY) {
-            alert(`شما روزانه فقط 4 کد برای هر بازی میتوانید بسازید`);
-            if (storedData.keys.length + keyCount > MAX_KEYS_PER_GAME_PER_DAY) {
-                previousKeysList.innerHTML = storedData.keys.map(key =>
-                    `<div class="key-item">
-                        <input type="text" value="${key}" readonly>
-                    </div>`
-                ).join('');
-                previousKeysContainer.classList.remove('hidden');
-                return;
-            }
-        }
+       
 
-        keyCountLabel.innerText = `تعداد کلید ها: ${keyCount}`;
+        keyCountLabel.innerText = `Number of keys: ${keyCount}`;
 
         progressBar.style.width = '0%';
         progressText.innerText = '0%';
-        progressLog.innerText = 'شروع...';
+        progressLog.innerText = 'Starting...';
         progressContainer.classList.remove('hidden');
         keyContainer.classList.add('hidden');
         generatedKeysTitle.classList.add('hidden');
@@ -191,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
             for (let i = 0; i < 11; i++) {
                 await sleep(EVENTS_DELAY * delayRandom());
                 const hasCode = await emulateProgress(clientToken, game.promoId);
-                updateProgress(7 / keyCount, 'مشاهده کردن تبلیغ...');
+                updateProgress(7 / keyCount, 'Emulating progress...');
                 if (hasCode) {
                     break;
                 }
@@ -199,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 const key = await generateKey(clientToken, game.promoId);
-                updateProgress(30 / keyCount, 'تولید کلید...');
+                updateProgress(30 / keyCount, 'Generating key...');
                 return key;
             } catch (error) {
                 alert(`Failed to generate key: ${error.message}`);
@@ -258,17 +247,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('generateMoreBtn').addEventListener('click', () => {
-        const gameChoice = parseInt(gameSelect.value);
-        const game = games[gameChoice];
-
-        const storedKeys = JSON.parse(localStorage.getItem(`generated_keys_${game.name}`)) || [];
-
-        // Check if the user has reached the limit
-        if (storedKeys.length >= MAX_KEYS_PER_GAME_PER_DAY) {
-            alert(`شما کلید های امروز را قبلا تولید کرده اید، فردا امتحان کنید`);
-            return;
-        }
-        
         progressContainer.classList.add('hidden');
         keyContainer.classList.add('hidden');
         startBtn.classList.remove('hidden');
@@ -281,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('creatorChannelBtn').addEventListener('click', () => {
-        window.open('https://web.telegram.org/@m_3_1_7', '_blank');
+        window.open('https://web.telegram.org/m_3_1_7', '_blank');
     });
 
     telegramChannelBtn.addEventListener('click', () => {
