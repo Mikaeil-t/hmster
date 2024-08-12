@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const EVENTS_DELAY = 12000;
-    const MAX_KEYS_PER_GAME_PER_DAY = 50;
+    const EVENTS_DELAY = 19000;
+    const MAX_KEYS_PER_GAME_PER_DAY = 12;
 
     const games = {
         1: {
@@ -140,7 +140,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const storageKey = `keys_generated_${game.name}`;
         const storedData = JSON.parse(localStorage.getItem(storageKey));
-
+     if (storedData.count + keyCount > MAX_KEYS_PER_GAME_PER_DAY) {
+            alert(`You can generate only ${MAX_KEYS_PER_GAME_PER_DAY - storedData.count} more keys for ${game.name} today.`);
+            previousKeysList.innerHTML = storedData.keys.map(key =>
+                `<div class="key-item">
+                    <input type="text" value="${key}" readonly>
+                </div>`
+            ).join('');
+            previousKeysContainer.classList.remove('hidden');
+            return;
+        }
        
 
         keyCountLabel.innerText = `Number of keys: ${keyCount}`;
@@ -259,10 +268,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('creatorChannelBtn').addEventListener('click', () => {
-        window.open('https://web.telegram.org/m_3_1_7', '_blank');
+        window.open('https://t.me/AirdropBeFarsi', '_blank');
     });
 
     telegramChannelBtn.addEventListener('click', () => {
-        window.open('https://t.me/AirdropBeFarsi', '_blank');
+        window.open('https://t.me/AirdropPro_Fa', '_blank');
     });
 });
