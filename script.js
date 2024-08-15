@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const EVENTS_DELAY = 18000;
+    const EVENTS_DELAY = 19000;
     const MAX_KEYS_PER_GAME_PER_DAY = 12;
 
     const games = {
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        const keys = await Promise.all(Array.from({ length: keyCount }, generateKeyProcess));
+        // const keys = await Promise.all(Array.from({ length: keyCount }, generateKeyProcess));
 
         // if (keys.length > 1) {
         //     keysList.innerHTML = keys.filter(key => key).map(key =>
