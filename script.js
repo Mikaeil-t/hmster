@@ -212,23 +212,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // const keys = await Promise.all(Array.from({ length: keyCount }, generateKeyProcess));
+        const keys = await Promise.all(Array.from({ length: keyCount }, generateKeyProcess));
 
-        // if (keys.length > 1) {
-        //     keysList.innerHTML = keys.filter(key => key).map(key =>
-        //         `<div class="key-item">
-        //             <input type="text" value="${key}" readonly>
-        //             <button class="copyKeyBtn" data-key="${key}">Copy Key</button>
-        //         </div>`
-        //     ).join('');
-        //     copyAllBtn.classList.remove('hidden');
-        // } else if (keys.length === 1) {
-        //     keysList.innerHTML =
-        //         `<div class="key-item">
-        //             <input type="text" value="${keys[0]}" readonly>
-        //             <button class="copyKeyBtn" data-key="${keys[0]}">Copy Key</button>
-        //         </div>`;
-        // }
+        if (keys.length > 1) {
+            keysList.innerHTML = keys.filter(key => key).map(key =>
+                `<div class="key-item">
+                    <input type="text" value="${key}" readonly>
+                    <button class="copyKeyBtn" data-key="${key}">Copy Key</button>
+                </div>`
+            ).join('');
+            copyAllBtn.classList.remove('hidden');
+        } else if (keys.length === 1) {
+            keysList.innerHTML =
+                `<div class="key-item">
+                    <input type="text" value="${keys[0]}" readonly>
+                    <button class="copyKeyBtn" data-key="${keys[0]}">Copy Key</button>
+                </div>`;
+        }
 
         storedData.count += keys.filter(key => key).length;
         storedData.keys.push(...keys.filter(key => key));
