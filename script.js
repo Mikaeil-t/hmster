@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const EVENTS_DELAY = 19000;
+    const EVENTS_DELAY = 18000;
     const MAX_KEYS_PER_GAME_PER_DAY = 12;
 
     const games = {
@@ -22,6 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'Train Miner',
             appToken: '82647f43-3f87-402d-88dd-09a90025313f',
             promoId: 'c4480ac7-e178-4973-8061-9ed5b2e17954',
+        },
+        5: {
+            name: 'MergeAway',
+            appToken: '8d1cc2ad-e097-4b86-90ef-7a27e19fb833',
+            promoId: 'dc128d28-c45b-411c-98ff-ac7726fbaea4',
         }
     };
 
@@ -38,6 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const generatedKeysTitle = document.getElementById('generatedKeysTitle');
     const gameSelect = document.getElementById('gameSelect');
     const copyStatus = document.getElementById('copyStatus');
+    const previousKeysContainer = document.getElementById('previousKeysContainer');
+    const previousKeysList = document.getElementById('previousKeysList');
     const telegramChannelBtn = document.getElementById('telegramChannelBtn');
 
     const initializeLocalStorage = () => {
@@ -46,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const storageKey = `keys_generated_${game.name}`;
             const storedData = JSON.parse(localStorage.getItem(storageKey));
             if (!storedData || storedData.date !== now) {
-                localStorage.setItem(storageKey, JSON.stringify({ date: now, count: 0 }));
+                localStorage.setItem(storageKey, JSON.stringify({ date: now, count: 0, keys: [] }));
             }
         });
     };
@@ -140,23 +147,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const storageKey = `keys_generated_${game.name}`;
         const storedData = JSON.parse(localStorage.getItem(storageKey));
-     // if (storedData.count + keyCount > MAX_KEYS_PER_GAME_PER_DAY) {
-     //        alert(`شما کلید های امروز را قبلا تولید کرده اید، فردا امتحان کنید`);
-     //        previousKeysList.innerHTML = storedData.keys.map(key =>
-     //            `<div class="key-item">
-     //                <input type="text" value="${key}" readonly>
-     //            </div>`
-     //        ).join('');
-     //        previousKeysContainer.classList.remove('hidden');
-     //        return;
-     //    }
-       
+
+        if (storedData.count + keyCount > MAX_KEYS_PER_GAME_PER_DAY) {
+            alert(`You can generate only ${MAX_KEYS_PER_GAME_PER_DAY - storedData.count} more keys for ${game.name} today.`);
+            previousKeysList.innerHTML = storedData.keys.map(key =>
+                `<div class="key-item">
+                    <input type="text" value="${key}" readonly>
+                </div>`
+            ).join('');
+            previousKeysContainer.classList.remove('hidden');
+            return;
+        }
 
         keyCountLabel.innerText = `Number of keys: ${keyCount}`;
 
         progressBar.style.width = '0%';
         progressText.innerText = '0%';
-        progressLog.innerText = 'Starting...';
+        progressLog.innerText = 'Starting... \n Please wait It may take upto 1 min to Login';
         progressContainer.classList.remove('hidden');
         keyContainer.classList.add('hidden');
         generatedKeysTitle.classList.add('hidden');
@@ -207,23 +214,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const keys = await Promise.all(Array.from({ length: keyCount }, generateKeyProcess));
 
-        if (keys.length > 1) {
-            keysList.innerHTML = keys.filter(key => key).map(key =>
-                `<div class="key-item">
-                    <input type="text" value="${key}" readonly>
-                    <button class="copyKeyBtn" data-key="${key}">Copy Key</button>
-                </div>`
-            ).join('');
-            copyAllBtn.classList.remove('hidden');
-        } else if (keys.length === 1) {
-            keysList.innerHTML =
-                `<div class="key-item">
-                    <input type="text" value="${keys[0]}" readonly>
-                    <button class="copyKeyBtn" data-key="${keys[0]}">Copy Key</button>
-                </div>`;
-        }
+        // if (keys.length > 1) {
+        //     keysList.innerHTML = keys.filter(key => key).map(key =>
+        //         `<div class="key-item">
+        //             <input type="text" value="${key}" readonly>
+        //             <button class="copyKeyBtn" data-key="${key}">Copy Key</button>
+        //         </div>`
+        //     ).join('');
+        //     copyAllBtn.classList.remove('hidden');
+        // } else if (keys.length === 1) {
+        //     keysList.innerHTML =
+        //         `<div class="key-item">
+        //             <input type="text" value="${keys[0]}" readonly>
+        //             <button class="copyKeyBtn" data-key="${keys[0]}">Copy Key</button>
+        //         </div>`;
+        // }
 
-        storedData.count += keyCount;
+        storedData.count += keys.filter(key => key).length;
+        storedData.keys.push(...keys.filter(key => key));
         localStorage.setItem(storageKey, JSON.stringify(storedData));
 
         keyContainer.classList.remove('hidden');
@@ -232,39 +240,32 @@ document.addEventListener('DOMContentLoaded', () => {
             button.addEventListener('click', (event) => {
                 const key = event.target.getAttribute('data-key');
                 navigator.clipboard.writeText(key).then(() => {
-                    copyStatus.classList.remove('hidden');
-                    setTimeout(() => copyStatus.classList.add('hidden'), 2000);
+                    copyStatus.innerText = `Copied ${key}`;
+                    setTimeout(() => {
+                        copyStatus.innerText = '';
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Could not copy text: ', err);
                 });
             });
         });
-        copyAllBtn.addEventListener('click', () => {
-            const keysText = keys.filter(key => key).join('\n');
-            navigator.clipboard.writeText(keysText).then(() => {
-                copyStatus.classList.remove('hidden');
-                setTimeout(() => copyStatus.classList.add('hidden'), 2000);
-            });
-        });
 
-        progressBar.style.width = '100%';
-        progressText.innerText = '100%';
-        progressLog.innerText = 'Complete';
-
-        startBtn.classList.remove('hidden');
+        startBtn.disabled = false;
         keyCountSelect.classList.remove('hidden');
         gameSelect.classList.remove('hidden');
-        startBtn.disabled = false;
+        startBtn.classList.remove('hidden');
     });
 
-    document.getElementById('generateMoreBtn').addEventListener('click', () => {
-        progressContainer.classList.add('hidden');
-        keyContainer.classList.add('hidden');
-        startBtn.classList.remove('hidden');
-        keyCountSelect.classList.remove('hidden');
-        gameSelect.classList.remove('hidden');
-        generatedKeysTitle.classList.add('hidden');
-        copyAllBtn.classList.add('hidden');
-        keysList.innerHTML = '';
-        keyCountLabel.innerText = 'Number of keys:';
+    copyAllBtn.addEventListener('click', () => {
+        const allKeys = Array.from(document.querySelectorAll('.key-item input')).map(input => input.value).join('\n');
+        navigator.clipboard.writeText(allKeys).then(() => {
+            copyStatus.innerText = 'All keys copied';
+            setTimeout(() => {
+                copyStatus.innerText = '';
+            }, 2000);
+        }).catch(err => {
+            console.error('Could not copy text: ', err);
+        });
     });
 
     document.getElementById('creatorChannelBtn').addEventListener('click', () => {
