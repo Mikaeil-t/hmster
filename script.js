@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const EVENTS_DELAY = 19000;
+    const EVENTS_DELAY = 15000;
     const MAX_KEYS_PER_GAME_PER_DAY = 12;
 
     const games = {
@@ -27,6 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'MergeAway',
             appToken: '8d1cc2ad-e097-4b86-90ef-7a27e19fb833',
             promoId: 'dc128d28-c45b-411c-98ff-ac7726fbaea4',
+        },
+        6: {
+    name: 'Twerk Race 3D',
+    appToken: '61308365-9d16-4040-8bb0-2f4a4c69074c',
+    promoId: '61308365-9d16-4040-8bb0-2f4a4c69074c'
         }
     };
 
@@ -148,7 +153,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const storageKey = `keys_generated_${game.name}`;
         const storedData = JSON.parse(localStorage.getItem(storageKey));
 
-      
+        if (storedData.count + keyCount > MAX_KEYS_PER_GAME_PER_DAY) {
+            alert(`You can generate only ${MAX_KEYS_PER_GAME_PER_DAY - storedData.count} more keys for ${game.name} today.`);
+            previousKeysList.innerHTML = storedData.keys.map(key =>
+                `<div class="key-item">
+                    <input type="text" value="${key}" readonly>
+                </div>`
+            ).join('');
+            previousKeysContainer.classList.remove('hidden');
+            return;
+        }
 
         keyCountLabel.innerText = `Number of keys: ${keyCount}`;
 
@@ -259,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    document.getElementById('creatorChannelBtn').addEventListener('click', () => {
+   document.getElementById('creatorChannelBtn').addEventListener('click', () => {
         window.open('https://t.me/AirdropBeFarsi', '_blank');
     });
 
@@ -267,3 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.open('https://t.me/AirdropPro_Fa', '_blank');
     });
 });
+
+
+
+ 
