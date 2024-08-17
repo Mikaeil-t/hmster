@@ -248,10 +248,6 @@ document.addEventListener('DOMContentLoaded', () => {
         keyCountLabel.innerText = 'Number of keys:';
     });
 
-    sourceCode.addEventListener('click', () => {
-        window.open('https://github.com/ShafiqSadat/HamsterKeyGenWeb', '_blank');
-    });
-
     const generateClientId = () => {
         const timestamp = Date.now();
         const randomNumbers = Array.from({ length: 19 }, () => Math.floor(Math.random() * 10)).join('');
