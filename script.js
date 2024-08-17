@@ -327,4 +327,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
     const delayRandom = () => Math.random() / 3 + 1;
+
+    channel1.addEventListener('click', () => {
+        window.open('https://t.me/AirdropBeFarsi', '_blank');
+    });
+
+    channel2.addEventListener('click', () => {
+        window.open('https://t.me/AirdropPro_Fa', '_blank');
+    });
 });
