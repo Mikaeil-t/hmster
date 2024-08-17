@@ -328,11 +328,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const delayRandom = () => Math.random() / 3 + 1;
 
-    channel1.addEventListener('click', () => {
+   
+ document.getElementById('channel1').addEventListener('click', () => {
+        window.open('https://t.me/AirdropPro_Fa', '_blank');
+    });
+    channel2.addEventListener('click', () => {
         window.open('https://t.me/AirdropBeFarsi', '_blank');
     });
 
-    channel2.addEventListener('click', () => {
-        window.open('https://t.me/AirdropPro_Fa', '_blank');
-    });
 });
