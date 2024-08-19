@@ -1,8 +1,8 @@
-/* Global Styles */
+/* دارک مود */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #121212; /* Dark background */
-    color: #e0e0e0; /* Light text color */
+    background-color: hsl(0, 0%, 3%); /* پس‌زمینه تیره */
+    color: #f35b03; /* رنگ متن روشن */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,59 +11,61 @@ body {
 }
 
 .container {
-    background: #1e1e1e; /* Slightly lighter background for container */
+    background: hsl(202, 98%, 34%); /* پس‌زمینه کانتینر تیره */
     border-radius: 10px;
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* سایه تیره‌تر */
     padding: 30px;
     max-width: 400px;
     width: 100%;
     text-align: center;
 }
 
-/* Heading */
 h1 {
     margin-bottom: 25px;
     font-size: 24px;
-    color: #ff5722; /* Bright orange color for title */
-    font-weight: 700;
+    color: #f55e00fb; /* رنگ نارنجی */
 }
 
-/* Grid Layout */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid */
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     margin-bottom: 20px;
 }
 
 .game-option {
-    border: 1px solid #333;
+    border: 3px solid hsl(195, 100%, 61%); /* نوار نارنجی */
     border-radius: 10px;
     padding: 10px;
     text-align: center;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
-    background-color: #2c2c2c; /* Darker background for game options */
+    transition: transform 0.3s, border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ایجاد اثر مات هنگام کلیک */
+.game-option.clicked img {
+    filter: blur(4px); /* مات کردن تصویر */
 }
 
 .game-option img {
     width: 100%;
     border-radius: 8px;
     margin-bottom: 10px;
+    transition: filter 0.3s; /* اضافه کردن انیمیشن به مات شدن تصویر */
 }
 
 .game-option p {
     font-weight: 500;
-    color: #e0e0e0; /* Light text color */
+    color: #ff5a01; /* رنگ متن روشن */
 }
 
 .game-option:hover, .game-option.selected {
     transform: scale(1.05);
-    background-color: #333; /* Darker background on hover */
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+    border-color: #ff6f00; /* نوار نارنجی در حالت hover */
 }
 
-/* Form Group */
 .form-group {
     margin-bottom: 20px;
     text-align: left;
@@ -73,7 +75,7 @@ label {
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
-    color: #e0e0e0; /* Light text color */
+    color: #e0e0e0; /* رنگ متن روشن */
 }
 
 .key-slider {
@@ -87,7 +89,7 @@ label {
     width: 100%;
     height: 8px;
     border-radius: 5px;
-    background: #444; /* Darker background for slider */
+    background: #444; /* پس‌زمینه اسلایدر تیره‌تر */
     outline: none;
     transition: background 0.3s;
 }
@@ -95,57 +97,46 @@ label {
 .key-slider input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    background: #ff5722; /* Bright orange thumb */
+    background: #ff6f00; /* رنگ زبانه اسلایدر نارنجی */
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+    transition: background 0.3s;
 }
 
 .key-slider input[type="range"]:hover::-webkit-slider-thumb {
-    background: #e64a19; /* Darker orange on hover */
-    transform: scale(1.1); /* Slightly larger thumb on hover */
+    background: #e65c00; /* رنگ زبانه اسلایدر در حالت hover */
 }
 
 #keyValue {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
-    color: #ff5722; /* Bright orange */
+    color: #ff6f00; /* رنگ نارنجی */
 }
 
-/* Buttons */
 button {
-    background-color: hwb(213 0% 4%); /* Bright orange */
+    background-color: #ff6f00; /* رنگ نارنجی */
     color: white;
     border: none;
-    padding: 14px 24px;
-    font-size: 18px;
+    padding: 12px 20px;
+    font-size: 16px;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    transition: background-color 0.3s;
     margin-top: 20px;
 }
 
 button:hover {
-    background-color: hsl(226, 100%, 50%); /* Darker orange on hover */
-    transform: translateY(-2px); /* Slight lift on hover */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    background-color: #e65c00; /* رنگ نارنجی تیره‌تر */
 }
 
-button:active {
-    background-color: #d84315; /* Even darker orange on click */
-    transform: translateY(0); /* Reset lift on click */
-}
-
-/* Hidden Elements */
 .hidden {
     display: none;
 }
 
-/* Progress Bar */
 .progress-bar {
-    background-color: #333;
+    background-color: #333; /* پس‌زمینه نوار پیشرفت تیره‌تر */
     border-radius: 8px;
     overflow: hidden;
     margin-top: 25px;
@@ -155,9 +146,9 @@ button:active {
 
 .progress-bar div {
     height: 100%;
-    background-color: #ff5722; /* Bright orange */
+    background-color: #ff6f00; /* رنگ نارنجی */
     width: 0;
-    transition: width 0.5s, background-color 0.3s;
+    transition: width 0.5s;
 }
 
 #progressText {
@@ -165,7 +156,6 @@ button:active {
     font-weight: 600;
 }
 
-/* Key Item */
 .key-item {
     display: flex;
     align-items: center;
@@ -174,70 +164,37 @@ button:active {
 
 .key-item input {
     flex: 1;
-    padding: 14px;
+    padding: 12px;
     font-size: 16px;
-    border: 1px solid #444;
+    border: 1px solid #555; /* رنگ مرز تیره‌تر */
     border-radius: 8px;
     margin-right: 12px;
-    background-color: #2c2c2c; /* Dark background for input */
-    color: #e0e0e0; /* Light text color */
+    background-color: #333; /* پس‌زمینه ورودی تیره‌تر */
+    color: #e0e0e0; /* رنگ متن روشن */
 }
 
 .copyKeyBtn {
-    background-color: #4caf50; /* Green */
+    background-color: #28a745;
     border: none;
     padding: 12px 20px;
     color: white;
     font-size: 16px;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: background-color 0.3s;
 }
 
 .copyKeyBtn:hover {
-    background-color: #388e3c; /* Darker green on hover */
-    transform: translateY(-2px); /* Slight lift on hover */
+    background-color: #218838;
 }
 
-.copyKeyBtn:active {
-    background-color: #2c6b2f; /* Even darker green on click */
-    transform: translateY(0); /* Reset lift on click */
-}
-
-/* Footer */
 .footer {
     margin-top: 25px;
     font-size: 14px;
-    color: #777; /* Light gray */
-}
-
-.footer p {
-    margin: 0;
-}
-
-.footer .telegram-btn {
-    background-color: #ff5722; /* Bright orange */
-    color: white;
-    border: none;
-    padding: 14px 24px;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    margin: 5px;
-}
-
-.footer .telegram-btn:hover {
-    background-color: #e64a19; /* Darker orange on hover */
-    transform: translateY(-2px); /* Slight lift on hover */
-}
-
-.footer .telegram-btn:active {
-    background-color: #d84315; /* Even darker orange on click */
-    transform: translateY(0); /* Reset lift on click */
+    color: #aaa; /* رنگ متن پایینی روشن‌تر */
 }
 
 #copyStatus {
     margin-top: 15px;
-    color: #4caf50; /* Green */
+    color: #00506b; /* رنگ سبز */
 }
