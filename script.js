@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'Riding Extreme 3D',
             appToken: 'd28721be-fd2d-4b45-869e-9f253b554e50',
             promoId: '43e35910-c168-4634-ad4f-52fd764a843f',
-            timing: 20000, // 20 seconds
-            attempts: 19,
+            timing: 21000, // 21 seconds
+            attempts: 22,
         },
         2: {
             name: 'Chain Cube 2048',
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             appToken: '74ee0b5b-775e-4bee-974f-63e7f4d5bacb',
             promoId: 'fe693b26-b342-4159-8808-15e3ff7f8767',
             timing: 120000, // 120 seconds
-            attempts: 11,
+            attempts: 12,
         },
         4: {
             name: 'Train Miner',
@@ -41,6 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
             promoId: '61308365-9d16-4040-8bb0-2f4a4c69074c',
             timing: 23000, // 23 seconds
             attempts: 15,
+        },
+        7: {
+            name: 'Polysphere',
+            appToken: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
+            promoId: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
+            timing: 17000, // 17 seconds
+            attempts: 19,
         }
     };
 
