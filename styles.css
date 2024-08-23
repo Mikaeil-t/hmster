@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-    background: hsl(202, 98%, 34%); /* پس‌زمینه کانتینر تیره */
+    background: hsl(202, 96%, 29%); /* پس‌زمینه کانتینر تیره */
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* سایه تیره‌تر */
     padding: 30px;
@@ -23,7 +23,7 @@ body {
 h1 {
     margin-bottom: 25px;
     font-size: 24px;
-    color: #f55e00fb; /* رنگ نارنجی */
+    color: hwb(51 0% 0%); /* رنگ نارنجی */
 }
 
 .grid-container {
@@ -34,7 +34,7 @@ h1 {
 }
 
 .game-option {
-    border: 3px solid hsl(195, 100%, 61%); /* نوار نارنجی */
+    border: 4px solid hwb(51 0% 0%); /* نوار نارنجی */
     border-radius: 10px;
     padding: 10px;
     text-align: center;
@@ -170,7 +170,7 @@ button:hover {
     border-radius: 8px;
     margin-right: 12px;
     background-color: #333; /* پس‌زمینه ورودی تیره‌تر */
-    color: #e0e0e0; /* رنگ متن روشن */
+    color: #ffca09; /* رنگ متن روشن */
 }
 
 .copyKeyBtn {
