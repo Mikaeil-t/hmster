@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>ایردراپ به فارسی</title>
+    <title>Hamster Key Generator</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1> VIP | ایردراپ به فارسـی</h1>
-        <br></br>
-        <h2>@ Airdrop Be Farsi VIP </h2>
+        <h1>Hamster Key Generator</h1>
         <div id="gameSelectContainer" class="grid-container">
             <div class="game-option" data-game="10">
             <img src="https://cdn.hamsterkombat.io/cafe_dash/image.webp" alt="CafeDash">
@@ -52,13 +50,13 @@
         </div>
 
         <div class="form-group hidden" id="keyCountGroup">
-           <label for="keyCountSelect">تعداد کلیـد</label>
+            <label for="keyCountSelect">Select Number of Keys:</label>
             <div id="keyCountSelect" class="key-slider">
-                <input type="range" min="1" max="8" value="1" id="keyRange">
+                <input type="range" min="1" max="4" value="1" id="keyRange">
                 <span id="keyValue">1</span>
             </div>
         </div>
-        <button id="startBtn" class="hidden">ساخـت کـلید</button>
+        <button id="startBtn" class="hidden">Generate Keys</button>
 
         <div id="progressContainer" class="hidden">
             <div class="progress-bar">
@@ -68,24 +66,20 @@
             <p id="progressLog">Starting...</p>
         </div>
 
-         <div id="keyContainer" class="hidden">
-            <h2 id="generatedKeysTitle" class="hidden">ساخت کلید</h2>
+        <div id="keyContainer" class="hidden">
+            <h2 id="generatedKeysTitle" class="hidden">Generated Keys</h2>
             <div id="keysList"></div>
-            <button id="copyAllBtn" class="hidden">کپی کردن تمام کلید ها</button>
+            <button id="copyAllBtn" class="hidden">Copy All Keys</button>
         </div>
 
-        <p id="keyCountLabel">تعداد کلید ها</p>
+        <p id="keyCountLabel">Number of keys:</p>
 
         <button id="generateMoreBtn" class="hidden">Generate More Keys</button>
-        <p id="copyStatus" class="hidden">تمام کلید ها کپی شدند</p>
+        <p id="copyStatus" class="hidden">Keys copied to clipboard!</p>
         
-         <div class="footer">
-            <a href="https://t.me/AirdropBeFarsi" target="_blank">
-                <button class="telegram-btn" id="channel1">کانال اسپانسر</button>
-            </a>
-            <a href="https://t.me/AirdropPro_fa" target="_blank">
-                <button class="telegram-btn" id="channel2">گروه اسپانسر</button>
-            </a>
+        <div class="footer">
+            <p>Disclaimer: This tool is for educational purposes only. Use responsibly.</p>
+            <button id="sourceCode">Source code</button>
         </div>
     </div>
 
