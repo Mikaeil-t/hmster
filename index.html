@@ -3,185 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIRDROP BE FARSI | VIP</title>
+    <title>Game Promo Code Generator</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 </head>
 <body>
     <div class="container">
-        <h1>AIRDROP BE FARSI | VIP</h1>
+        <h1>Airdrop Be Farsi </h1>
         <br></br>
-       <h2>ویژه|ایـردراپ بـه فـارسی </h2>
-        <div id="gameSelectContainer" class="grid-container">
-            <div class="game-option" data-game="10">
-            <img src="https://cdn.hamsterkombat.io/cafe_dash/image.webp" alt="CafeDash">
-            <p>Cafe Dash</p>
-            </div>
-          <div class="game-option" data-game="9">
-            <img src="https://cdn.hamsterkombat.io/mud_racing/image.webp" alt="Polysphere">
-            <p>Mud Racing</p>
-            </div>
-            <div class="game-option" data-game="8">
-            <img src="https://cdn.hamsterkombat.io/mow_trim/image.webp" alt="Polysphere">
-            <p>Mow and Trim</p>
-            </div>
-            <div class="game-option" data-game="7">
-            <img src="https://cdn.hamsterkombat.io/polysphere/image.webp" alt="Polysphere">
-            <p>Polysphere</p>
-            </div>
-            <div class="game-option" data-game="6">
-                <img src="https://cdn.hamsterkombat.io/twerk/image.webp" alt="Twerk Race 3D">
-                <p>Twerk Race 3D</p>
-            </div>
-            <div class="game-option" data-game="5">
-                <img src="https://cdn.hamsterkombat.io/merge_away/image.webp" alt="Merge Away">
-                <p>Merge Away</p>
-            </div>
-            <div class="game-option" data-game="2">
-                <img src="https://cdn.hamsterkombat.io/chain_cube/image.webp" alt="Chain Cube 2048">
-                <p>Chain Cube 2048</p>
-            </div>
-            <div class="game-option" data-game="4">
-                <img src="https://cdn.hamsterkombat.io/train_miner/image.webp" alt="Train Miner">
-                <p>Train Miner</p>
-            </div>
-            <div class="game-option" data-game="1">
-                <img src="https://cdn.hamsterkombat.io/bikeride/image.webp" alt="Bike Ride 3D">
-                <p>Bike Ride 3D</p>
-            </div>
+        <h2>ایــردراپ بـه فــارسی</h2>
+        <div class="form-group">
+            <label for="gameSelect">Select Game</label>
+            <select id="gameSelect">
+                <option value="1">ZooPolis </option>
+                <option value="2">Chain Cube 2048</option>
+                <option value="3">Fluff Crusade (new)</option>
+                <option value="4">Train Miner</option>
+                <option value="5">Merge Away ⭐</option>
+                <option value="6">Twerk Race</option>
+                <option value="7">Polysphere</option>
+                <option value="8">Mow and Trim</option>
+                <option value="9">Tile Trio </option>
+                <option value="10">Stone Age </option>
+                <option value="11">Bouncemasters (NEW) </option>
+                <option value="12">Hide Ball (NEW) </option>
+                
+
+            </select>
         </div>
 
-        <div class="form-group hidden" id="keyCountGroup">
-            <label for="keyCountSelect">Select Number of Keys:</label>
-            <div id="keyCountSelect" class="key-slider">
-                <input type="range" min="1" max="4" value="1" id="keyRange">
-                <span id="keyValue">1</span>
-            </div>
-        </div>
-        <button id="startBtn" class="hidden">Generate Keys</button>
+        <div id="google_translate_element"></div>
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                    pageLanguage: 'en', 
+                    includedLanguages: 'en,fa', 
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                }, 'google_translate_element');
+            }
+            
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        
 
+        
+        <div class="form-group">
+            <label id="keyCountLabel" for="keyCountSelect">Number of keys:</label>
+            <select id="keyCountSelect">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="10">10</option>
+                
+            </select>
+        </div>
+        <button id="startBtn">Generate Keys</button>
+        
         <div id="progressContainer" class="hidden">
             <div class="progress-bar">
                 <div id="progressBar"></div>
             </div>
-            <p id="progressText">0%</p>
-            <p id="progressLog">Starting...</p>
+            <div id="progressText">0%</div>
+            <div id="progressLog">Starting...</div>
+            <div id="countdownContainer">
+            <p>Next Step will start in: <span id="countdownTimer"></span> seconds </p>
+            </div>
         </div>
-
         <div id="keyContainer" class="hidden">
-            <h2 id="generatedKeysTitle" class="hidden">Generated Keys</h2>
+            <h3 id="generatedKeysTitle" class="hidden">Generated Keys:</h3>
             <div id="keysList"></div>
             <button id="copyAllBtn" class="hidden">Copy All Keys</button>
+            <div id="copyStatus" class="hidden">Copied!</div>
+            <!-- <button id="generateMoreBtn">Generate More Keys</button> -->
         </div>
 
-        <p id="keyCountLabel">Number of keys:</p>
 
-        <button id="generateMoreBtn" class="hidden">Generate More Keys</button>
-        <p id="copyStatus" class="hidden">Keys copied to clipboard!</p>
-         <div class="footer">
-            <p>Disclaimer: This tool is for educational purposes only. Use responsibly.</p>
-            <button id="sourceCode">Source code</button>
+        <label>
+            <input type="checkbox" id="logCheckbox"> Enable Logs
+        </label>
+        <textarea id="logArea" rows="3" readonly style="width: 100%; resize: none; font-size: 12px; display: none;"></textarea>
+
+        <div class="mycodes">
+            <p>
+                The Key Generation may take upto 10 mins<br>
+                
+            </p>
+            <button id="ShowKeysBtn">My Codes</button>
+            <div id="generatedCodesContainer" style="display:none;">
+                <h3>Today's Generated Codes:</h3>
+                <ul id="generatedCodesList"></ul>
+            </div>
+
         </div>
-     
-    <script src="script.js"></script>
-</body>
-</html>
-
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ایردراپ به فارسی</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <h1> VIP | ایردراپ به فارسـی</h1>
-        <br></br>
-        <h2>@ Airdrop Be Farsi VIP </h2>
-       <div id="gameSelectContainer" class="grid-container">
-            <div class="game-option" data-game="10">
-            <img src="https://cdn.hamsterkombat.io/cafe_dash/image.webp" alt="CafeDash">
-            <p>Cafe Dash</p>
-            </div>
-          <div class="game-option" data-game="9">
-            <img src="https://cdn.hamsterkombat.io/mud_racing/image.webp" alt="Polysphere">
-            <p>Mud Racing</p>
-            </div>
-            <div class="game-option" data-game="8">
-            <img src="https://cdn.hamsterkombat.io/mow_trim/image.webp" alt="Polysphere">
-            <p>Mow and Trim</p>
-            </div>
-            <div class="game-option" data-game="7">
-            <img src="https://cdn.hamsterkombat.io/polysphere/image.webp" alt="Polysphere">
-            <p>Polysphere</p>
-            </div>
-            <div class="game-option" data-game="6">
-                <img src="https://cdn.hamsterkombat.io/twerk/image.webp" alt="Twerk Race 3D">
-                <p>Twerk Race 3D</p>
-            </div>
-            <div class="game-option" data-game="5">
-                <img src="https://cdn.hamsterkombat.io/merge_away/image.webp" alt="Merge Away">
-                <p>Merge Away</p>
-            </div>
-            <div class="game-option" data-game="2">
-                <img src="https://cdn.hamsterkombat.io/chain_cube/image.webp" alt="Chain Cube 2048">
-                <p>Chain Cube 2048</p>
-            </div>
-            <div class="game-option" data-game="4">
-                <img src="https://cdn.hamsterkombat.io/train_miner/image.webp" alt="Train Miner">
-                <p>Train Miner</p>
-            </div>
-            <div class="game-option" data-game="1">
-                <img src="https://cdn.hamsterkombat.io/bikeride/image.webp" alt="Bike Ride 3D">
-                <p>Bike Ride 3D</p>
-            </div>
-        </div>
-        <div class="form-group hidden" id="keyCountGroup">
-            <label for="keyCountSelect">تعداد کلیـد</label>
-            <div id="keyCountSelect" class="key-slider">
-                <input type="range" min="2" max="10" value="2" id="keyRange">
-                <span id="keyValue">1</span>
-            </div>
-        </div>
-        <button id="startBtn" class="hidden">شــروع | Start</button>
-
-        <div id="progressContainer" class="hidden">
-            <div class="progress-bar">
-                <div id="progressBar">درحال ساخت</div>
-            </div>
-            <p id="progressText">0%</p>
-            <p id="progressLog">در حال شروع..(ممکنه طول بکشه-صبور باشید)</p>
-        </div>
-
-        <div id="keyContainer" class="hidden">
-            <h2 id="generatedKeysTitle" class="hidden">ساخت کلید</h2>
-            <div id="keysList"></div>
-            <button id="copyAllBtn" class="hidden">کپی کردن تمام کلید ها</button>
-        </div>
-
-        <p id="keyCountLabel">تعداد کلید ها</p>
-
-        <button id="generateMoreBtn" class="hidden">Generate More Keys</button>
-        <p id="copyStatus" class="hidden">تمام کلید ها کپی شدند</p>
-        
         <div class="footer">
-            <p>Disclaimer: این پروژه توسط تیم تلگرام ایردراپ به فارسی ساخته شده است</p>
-            <button id="sourceCode">کــانال اســپانسر</button>
+            <p>Disclaimer: This tool is for educational purposes only. Use responsibly.
+            <button id="telegramChannelBtn">Check out Our Telegram Channel 🆔</button></p>
+            <button id="creatorChannelBtn">Contact Creator 🤖</button> 
+            
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
+
 </html>
-
-
-
- -->
-
-
-
