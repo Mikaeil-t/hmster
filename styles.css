@@ -1,134 +1,79 @@
-/* دارک مود */
+:root{
+    /*Light color scheme*/
+    --bg-clr-light: #f0f0f0;
+    --container-clr-light:#fff;
+    --text-clr-light: #333;
+
+    /*Dark color scheme*/
+    --bg-clr-dark: #101010;
+    --container-clr-dark:#1f1f1f;
+    --text-clr-dark: #bdc1c6;
+}
+
+
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: hsl(0, 0%, 3%); /* پس‌زمینه تیره */
-    color: #f35b03; /* رنگ متن روشن */
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-clr-light);
+    color: var(--text-clr-light);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    color-scheme: light dark;
 }
 
 .container {
-    background: hsl(202, 96%, 29%); /* پس‌زمینه کانتینر تیره */
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* سایه تیره‌تر */
-    padding: 30px;
-    max-width: 400px;
+    background: var(--container-clr-light);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 500px;
     width: 100%;
     text-align: center;
+    
+    height: 100vh;
+    overflow: auto; /* Ensure scroll works */
+    padding: 20px;
+
 }
 
 h1 {
-    margin-bottom: 25px;
-    font-size: 24px;
-    color: hwb(51 0% 0%); /* رنگ نارنجی */
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
     margin-bottom: 20px;
-}
-
-.game-option {
-    border: 4px solid hwb(51 0% 0%); /* نوار نارنجی */
-    border-radius: 10px;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s, border-color 0.3s;
-    position: relative;
-    overflow: hidden;
-}
-
-/* ایجاد اثر مات هنگام کلیک */
-.game-option.clicked img {
-    filter: blur(4px); /* مات کردن تصویر */
-}
-
-.game-option img {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    transition: filter 0.3s; /* اضافه کردن انیمیشن به مات شدن تصویر */
-}
-
-.game-option p {
-    font-weight: 500;
-    color: #ff5a01; /* رنگ متن روشن */
-}
-
-.game-option:hover, .game-option.selected {
-    transform: scale(1.05);
-    border-color: #ff6f00; /* نوار نارنجی در حالت hover */
 }
 
 .form-group {
-    margin-bottom: 20px;
-    text-align: left;
+    margin-bottom: 15px;
 }
 
 label {
     display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #e0e0e0; /* رنگ متن روشن */
-}
-
-.key-slider {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.key-slider input[type="range"] {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 8px;
-    border-radius: 5px;
-    background: #444; /* پس‌زمینه اسلایدر تیره‌تر */
-    outline: none;
-    transition: background 0.3s;
-}
-
-.key-slider input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #ff6f00; /* رنگ زبانه اسلایدر نارنجی */
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.key-slider input[type="range"]:hover::-webkit-slider-thumb {
-    background: #e65c00; /* رنگ زبانه اسلایدر در حالت hover */
-}
-
-#keyValue {
-    font-size: 18px;
+    margin-bottom: 5px;
     font-weight: bold;
-    color: #ff6f00; /* رنگ نارنجی */
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 15px;
 }
 
 button {
-    background-color: #ff6f00; /* رنگ نارنجی */
+    background-color: #007bff;
     color: white;
     border: none;
-    padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 20px;
+    transition: background 150ms;
 }
 
+
+
 button:hover {
-    background-color: #e65c00; /* رنگ نارنجی تیره‌تر */
+    background-color: #0056b3;
 }
 
 .hidden {
@@ -136,52 +81,49 @@ button:hover {
 }
 
 .progress-bar {
-    background-color: #333; /* پس‌زمینه نوار پیشرفت تیره‌تر */
-    border-radius: 8px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
     overflow: hidden;
-    margin-top: 25px;
-    height: 35px;
+    margin-top: 20px;
+    height: 30px;
     position: relative;
 }
 
 .progress-bar div {
     height: 100%;
-    background-color: #ff6f00; /* رنگ نارنجی */
+    background-color: #007bff;
     width: 0;
     transition: width 0.5s;
 }
 
 #progressText {
-    margin-top: 15px;
-    font-weight: 600;
+    margin-top: 10px;
+    font-weight: bold;
 }
 
 .key-item {
     display: flex;
     align-items: center;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .key-item input {
     flex: 1;
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #555; /* رنگ مرز تیره‌تر */
-    border-radius: 8px;
-    margin-right: 12px;
-    background-color: #333; /* پس‌زمینه ورودی تیره‌تر */
-    color: #ffca09; /* رنگ متن روشن */
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
 }
 
 .copyKeyBtn {
     background-color: #28a745;
     border: none;
-    padding: 12px 20px;
+    padding: 10px 20px;
     color: white;
-    font-size: 16px;
-    border-radius: 8px;
+    font-size: 14px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .copyKeyBtn:hover {
@@ -189,12 +131,57 @@ button:hover {
 }
 
 .footer {
-    margin-top: 25px;
+    margin-top: 20px;
     font-size: 14px;
-    color: #aaa; /* رنگ متن پایینی روشن‌تر */
 }
 
 #copyStatus {
-    margin-top: 15px;
-    color: #00506b; /* رنگ سبز */
+    margin-top: 10px;
+    color: green;
+}
+
+#telegramChannelBtn{
+    background-color: green;
+}
+
+#countdownContainer {
+    display: none;
+    font-size: 1.05em;
+    color: #ff0000;
+    margin: 10px 0;
+}
+
+.scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 18px;
+}
+
+.scrollToTopBtn:hover {
+    background-color: #555;
+}
+
+@media (prefers-color-scheme:dark) {
+    body{
+        background-color: var(--bg-clr-dark);
+        color: var(--text-clr-dark);
+    }
+    .container{
+        background-color: var(--container-clr-dark);
+    }
+    button{
+        filter:brightness(0.94);
+    }
+    .progress-bar{
+        background-color: #484848;
+    }
 }
