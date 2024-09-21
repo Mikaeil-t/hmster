@@ -270,17 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const storageKey = `keys_generated_${game.name}`;
         const storedData = JSON.parse(localStorage.getItem(storageKey));
 
-        if (storedData.count + keyCount > MAX_KEYS_PER_GAME_PER_DAY) {
-            alert(`You can generate only ${MAX_KEYS_PER_GAME_PER_DAY - storedData.count} more keys for ${game.name} today.`);
-            previousKeysList.innerHTML = storedData.keys.map(key =>
-                `<div class="key-item">
-                    <input type="text" value="${key}" readonly>
-                </div>`
-            ).join('');
-            previousKeysContainer.classList.remove('hidden');
-            return;
-        }
-
+      
         keyCountLabel.innerText = `Number of keys: ${keyCount}`;
 
         progressBar.style.width = '0%';
